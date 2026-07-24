@@ -110,7 +110,10 @@
       radial-gradient(92% 72% at 58% 70%, rgba(246,199,188,.22) 0%, rgba(246,199,188,0) 60%),
       radial-gradient(110% 80% at 84% 2%, rgba(150,205,240,.32) 0%, rgba(150,205,240,0) 55%),
       linear-gradient(162deg,#123058 0%,#152846 46%,#18233e 100%);}
-  .hero-art .flow{position:absolute;inset:0;opacity:.62;pointer-events:none}
+  .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+    opacity:.34;mix-blend-mode:soft-light;filter:blur(1.5px) saturate(.9);
+    transform:scale(1.06);pointer-events:none;z-index:0}
+  .hero-art .flow{position:absolute;inset:0;opacity:.55;pointer-events:none}
   .hero-art .flow svg{width:100%;height:100%}
   .hero-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
     padding:clamp(26px,6vw,40px) clamp(24px,5.4vw,40px);
@@ -362,6 +365,7 @@
     <!-- HERO -->
     <section class="hero rise d2">
       <div class="hero-art">
+        <img class="hero-photo" src="assets/hero.jpg" alt="" aria-hidden="true" loading="eager" />
         <div class="flow" aria-hidden="true">
           <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
             <g fill="none" stroke-width="1.4" stroke-linecap="round">
