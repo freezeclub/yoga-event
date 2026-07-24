@@ -157,6 +157,16 @@
   .cta .arw{flex:none;color:rgba(8,33,72,.58)}
   .cta .arw svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
+  /* ===== Einladung / für jede:n ===== */
+  .welcome{display:flex;align-items:center;gap:13px;margin-top:var(--gap);
+    border-radius:var(--radius);padding:15px 17px}
+  .welcome .wic{width:42px;height:42px;border-radius:13px;flex:none;display:grid;place-items:center;
+    background:var(--warm-2);color:var(--navy)}
+  .welcome .wic svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .welcome .wtx{min-width:0}
+  .welcome b{display:block;font-size:14.5px;font-weight:600;color:var(--ice);letter-spacing:-.01em}
+  .welcome span{display:block;font-size:12.5px;color:var(--ice-dim);margin-top:2px;line-height:1.45}
+
   /* ===== ABLAUF / Timeline ===== */
   .timeline{position:relative;padding-left:6px}
   .step{position:relative;display:flex;gap:17px;padding-bottom:26px}
@@ -408,6 +418,11 @@
       <span class="txt"><b>Platz sichern</b><span>Begrenzte Teilnehmerzahl · 79 € pro Person</span></span>
       <span class="arw"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
+
+    <div class="welcome frost rise d4">
+      <span class="wic"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M2.5 21a6.5 6.5 0 0 1 13 0"/><path d="M16 3.2a3 3 0 0 1 0 5.6M22 21a6 6 0 0 0-4-5.6"/></svg></span>
+      <div class="wtx"><b>Für jede:n — auch für Anfänger:innen</b><span>Ob du zum ersten Mal auf der Matte stehst oder schon lange übst: Hier ist wirklich für jeden etwas dabei. Komm einfach, wie du bist.</span></div>
+    </div>
   </div>
 
   <!-- ============ SPALTE B (Inhalt) ============ -->
