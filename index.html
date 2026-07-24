@@ -309,6 +309,16 @@
   .igbtn svg{width:19px;height:19px;fill:var(--warm-2);flex:none}
   .igbtn .h{flex-basis:100%;text-align:left;color:var(--ice-faint);font-weight:400;font-size:11.5px}
 
+  /* countdown */
+  .countdown{border-radius:var(--radius);padding:22px 20px;margin:0 auto 22px;text-align:center;max-width:520px}
+  .cd-label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--warm-2)}
+  .cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+  .cd-cell{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:14px 4px}
+  .cd-cell b{display:block;font-size:clamp(26px,7.5vw,34px);font-weight:700;color:var(--ice);
+    font-variant-numeric:tabular-nums;line-height:1}
+  .cd-cell span{display:block;font-size:10px;color:var(--ice-faint);margin-top:7px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .cd-date{margin-top:15px;font-size:13px;color:var(--ice-dim);font-weight:600}
+
   /* final CTA */
   .final{text-align:center;margin-top:var(--section)}
   .final h2{font-size:clamp(24px,6vw,30px);font-weight:700;letter-spacing:-.01em}
@@ -608,6 +618,16 @@
 
   <!-- FINAL CTA -->
   <div class="final rise d7">
+    <div class="countdown frost" id="countdown">
+      <div class="cd-label">Das Event startet in</div>
+      <div class="cd-grid">
+        <div class="cd-cell"><b id="cdD">–</b><span>Tage</span></div>
+        <div class="cd-cell"><b id="cdH">–</b><span>Std.</span></div>
+        <div class="cd-cell"><b id="cdM">–</b><span>Min.</span></div>
+        <div class="cd-cell"><b id="cdS">–</b><span>Sek.</span></div>
+      </div>
+      <div class="cd-date" id="cdDate"></div>
+    </div>
     <h2>Bereit für <span class="g">fließen &amp; frieren</span>?</h2>
     <p>Sichere dir deinen Platz. Die Teilnehmerzahl ist begrenzt.</p>
     <a class="cta" href="https://shop.freezeclub.de/products/freezeclub-x-sassis-yoga-1" target="_blank" rel="noopener" style="margin-top:20px">
@@ -704,6 +724,34 @@
     function end(){ down=false; }
     s.addEventListener('pointerup', end);
     s.addEventListener('pointercancel', end);
+  })();
+
+  /* ---- Countdown zum nächsten Termin ---- */
+  (function(){
+    var box = document.getElementById('countdown');
+    if(!box) return;
+    // 18:00 Uhr deutsche Zeit (CEST = UTC+2) → 16:00 UTC
+    var events = [
+      { ts: Date.UTC(2026, 7, 7, 16, 0, 0),  label: 'Freitag, 7. August 2026 · 18:00 Uhr' },
+      { ts: Date.UTC(2026, 8, 18, 16, 0, 0), label: 'Freitag, 18. September 2026 · 18:00 Uhr' }
+    ];
+    var D=document.getElementById('cdD'), H=document.getElementById('cdH'),
+        M=document.getElementById('cdM'), S=document.getElementById('cdS'),
+        L=document.getElementById('cdDate'), lbl=box.querySelector('.cd-label');
+    function pad(n){ return (n<10?'0':'')+n; }
+    function tick(){
+      var now = Date.now(), ev = null;
+      for(var i=0;i<events.length;i++){ if(events[i].ts > now){ ev = events[i]; break; } }
+      if(!ev){ if(lbl) lbl.textContent='Das Event hat bereits stattgefunden'; D.textContent=H.textContent=M.textContent=S.textContent='0'; L.textContent=''; return false; }
+      var diff = Math.floor((ev.ts - now)/1000);
+      var d = Math.floor(diff/86400); diff -= d*86400;
+      var h = Math.floor(diff/3600);  diff -= h*3600;
+      var m = Math.floor(diff/60);    var sec = diff - m*60;
+      D.textContent = d; H.textContent = pad(h); M.textContent = pad(m); S.textContent = pad(sec);
+      L.textContent = ev.label;
+      return true;
+    }
+    if(tick() !== false){ var iv = setInterval(function(){ if(tick() === false) clearInterval(iv); }, 1000); }
   })();
 </script>
 </body>
