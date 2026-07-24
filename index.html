@@ -36,10 +36,11 @@
     --ice-dim:rgba(234,246,255,.64);
     --ice-faint:rgba(234,246,255,.42);
     --line:rgba(212,237,252,.14);
-    --accent:#D4EDFC;        /* Eis / freeze */
-    --warm:#F2B98A;          /* Apricot / inneres Feuer */
-    --warm-soft:#F8D4B4;
-    --ember:#EC9A6E;
+    --accent:#D4EDFC;         /* Eis / freeze */
+    --warm:#F5551F;           /* Sässis-Orange */
+    --warm-2:#FF7C48;         /* helleres Orange */
+    --warm-soft:#FBB79A;
+    --blush:#F7C9BE;          /* Sässis-Blush */
     --gap:15px;
     --section:60px;
     --radius:22px;
@@ -54,22 +55,24 @@
   }
   a{-webkit-tap-highlight-color:transparent}
 
-  /* Atmosphäre: kühl oben, warmer Ember-Glow von unten */
+  /* Atmosphäre: kühl oben, warmer Sässis-Glow von unten */
   .sky{position:fixed;inset:0;z-index:-3;background:
-      radial-gradient(900px 520px at 50% -14%, #17457f 0%, rgba(23,69,127,0) 60%),
-      radial-gradient(760px 620px at 78% 116%, #2a2240 0%, rgba(42,34,64,0) 62%),
-      linear-gradient(180deg,#0b2549 0%,#081d3e 46%,#050f26 100%);}
+      radial-gradient(1000px 560px at 50% -12%, #17457f 0%, rgba(23,69,127,0) 60%),
+      radial-gradient(820px 680px at 80% 116%, #5a2418 0%, rgba(90,36,24,0) 60%),
+      linear-gradient(180deg,#0b2549 0%,#0a1f3f 46%,#0a1226 100%);}
   .aurora{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.95;background:
-      radial-gradient(46% 34% at 22% 16%, rgba(120,200,255,.16), transparent 72%),
-      radial-gradient(52% 40% at 82% 88%, rgba(242,185,138,.22), transparent 72%),
-      radial-gradient(40% 34% at 58% 66%, rgba(236,154,110,.12), transparent 72%),
-      radial-gradient(46% 32% at 60% 6%, rgba(180,210,255,.10), transparent 72%);}
+      radial-gradient(44% 32% at 20% 14%, rgba(120,200,255,.15), transparent 72%),
+      radial-gradient(56% 44% at 82% 90%, rgba(245,85,31,.24), transparent 70%),
+      radial-gradient(42% 36% at 55% 62%, rgba(255,124,72,.14), transparent 72%),
+      radial-gradient(44% 30% at 60% 4%, rgba(180,210,255,.09), transparent 72%);}
   .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
-  .wrap{max-width:468px;margin:0 auto;position:relative;
+  .wrap{width:100%;max-width:468px;margin:0 auto;position:relative;
     padding:calc(46px + env(safe-area-inset-top)) max(22px, env(safe-area-inset-right))
             calc(122px + env(safe-area-inset-bottom)) max(22px, env(safe-area-inset-left));}
+
+  .shell{display:flex;flex-direction:column}
 
   /* entrance */
   .rise{opacity:0;transform:translateY(18px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
@@ -84,7 +87,7 @@
   /* header */
   header{text-align:center;margin-bottom:8px}
   .logo{width:150px;max-width:48%;height:auto;filter:drop-shadow(0 8px 28px rgba(0,0,0,.5))}
-  .cross{display:flex;align-items:center;justify-content:center;gap:13px;margin-top:20px}
+  .cross{display:flex;align-items:center;justify-content:center;gap:13px;margin-top:20px;flex-wrap:wrap}
   .cross .x{font-size:15px;font-weight:300;color:var(--ice-faint)}
   .cross .side{font-size:17px;font-weight:600;letter-spacing:.01em;color:var(--ice)}
   .cross .side.sass{color:var(--warm)}
@@ -102,28 +105,28 @@
     box-shadow:0 40px 80px -44px rgba(0,0,0,.8), 0 0 0 1px rgba(212,237,252,.06)}
   .hero-art{position:relative;aspect-ratio:4/5;
     background:
-      radial-gradient(120% 88% at 22% 104%, rgba(242,185,138,.5) 0%, rgba(242,185,138,0) 54%),
-      radial-gradient(90% 70% at 88% 118%, rgba(236,154,110,.4) 0%, rgba(236,154,110,0) 55%),
-      radial-gradient(110% 80% at 84% 6%, rgba(120,200,255,.3) 0%, rgba(120,200,255,0) 55%),
-      linear-gradient(162deg,#0f2d57 0%,#0a2044 48%,#061a38 100%);}
-  .hero-art .flow{position:absolute;inset:0;opacity:.6;pointer-events:none}
+      radial-gradient(120% 90% at 24% 106%, rgba(245,85,31,.62) 0%, rgba(245,85,31,0) 56%),
+      radial-gradient(95% 74% at 86% 116%, rgba(255,124,72,.5) 0%, rgba(255,124,72,0) 55%),
+      radial-gradient(110% 80% at 84% 4%, rgba(120,200,255,.28) 0%, rgba(120,200,255,0) 55%),
+      linear-gradient(162deg,#0f2d57 0%,#0c2246 48%,#0b1a38 100%);}
+  .hero-art .flow{position:absolute;inset:0;opacity:.62;pointer-events:none}
   .hero-art .flow svg{width:100%;height:100%}
   .hero-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
-    padding:30px 26px 30px;
-    background:linear-gradient(180deg,rgba(4,13,36,0) 42%,rgba(4,13,36,.35) 74%,rgba(4,13,36,.72) 100%)}
+    padding:clamp(26px,6vw,40px) clamp(24px,5.4vw,40px);
+    background:linear-gradient(180deg,rgba(6,16,38,0) 40%,rgba(6,16,38,.34) 72%,rgba(6,16,38,.72) 100%)}
   .kicker{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
-    font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);
-    background:linear-gradient(92deg,var(--warm),var(--accent));border-radius:100px;padding:8px 14px;
-    box-shadow:0 12px 28px -12px rgba(242,185,138,.75)}
-  .htitle{margin-top:18px;font-size:44px;line-height:1.0;font-weight:700;letter-spacing:-.02em}
+    font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;
+    background:linear-gradient(92deg,var(--warm),var(--warm-2));border-radius:100px;padding:8px 14px;
+    box-shadow:0 12px 28px -10px rgba(245,85,31,.85)}
+  .htitle{margin-top:18px;font-size:clamp(38px,10vw,54px);line-height:1.0;font-weight:700;letter-spacing:-.02em}
   .htitle .i{color:var(--accent)}
-  .htitle .g{color:var(--warm)}
-  .hsub{margin-top:16px;font-size:14.5px;line-height:1.6;color:var(--ice-dim);max-width:34ch}
+  .htitle .g{color:var(--warm-2)}
+  .hsub{margin-top:16px;font-size:clamp(14px,3.6vw,15.5px);line-height:1.6;color:var(--ice-dim);max-width:36ch}
 
   /* date chips */
   .dates{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:var(--gap)}
   .datechip{display:flex;flex-direction:column;gap:2px;text-align:center;padding:17px 10px;border-radius:20px}
-  .datechip .dow{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--warm)}
+  .datechip .dow{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--warm-2)}
   .datechip .day{font-size:24px;font-weight:700;letter-spacing:-.01em;color:var(--ice);margin-top:2px}
   .datechip .mo{font-size:12.5px;color:var(--ice-dim);font-weight:500}
   .datechip .tm{font-size:11.5px;color:var(--ice-faint);font-weight:500;margin-top:6px;
@@ -132,24 +135,23 @@
   /* primary CTA */
   .cta{position:relative;overflow:hidden;display:flex;align-items:center;gap:16px;
     border-radius:var(--radius);padding:19px;text-decoration:none;margin-top:var(--gap);
-    background:linear-gradient(94deg,var(--warm-soft),var(--accent));color:var(--navy);
-    box-shadow:0 22px 46px -20px rgba(242,185,138,.75);
+    background:linear-gradient(94deg,var(--warm),var(--warm-2));color:#fff;
+    box-shadow:0 22px 46px -18px rgba(245,85,31,.8);
     transition:transform .2s ease,filter .2s ease}
   .cta::before{content:"";position:absolute;top:0;left:-70%;width:55%;height:100%;
-    background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);
     transform:skewX(-16deg);transition:left .8s cubic-bezier(.2,.7,.2,1);pointer-events:none}
   .cta:hover::before{left:135%}
-  .cta:hover{transform:translateY(-2px);filter:brightness(1.03)}
+  .cta:hover{transform:translateY(-2px);filter:brightness(1.04)}
   .cta:active{transform:scale(.99)}
   .cta .ic{width:46px;height:46px;border-radius:14px;flex:none;display:grid;place-items:center;
-    background:var(--navy);color:var(--warm)}
+    background:rgba(255,255,255,.92);color:var(--warm)}
   .cta .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   .cta .txt{flex:1;min-width:0}
   .cta .txt b{display:block;font-weight:700;font-size:16px;letter-spacing:-.01em}
-  .cta .txt span{display:block;font-size:12.5px;color:rgba(8,33,72,.66);font-weight:500;margin-top:2px}
-  .cta .arw{flex:none;color:rgba(8,33,72,.6)}
+  .cta .txt span{display:block;font-size:12.5px;color:rgba(255,255,255,.85);font-weight:500;margin-top:2px}
+  .cta .arw{flex:none;color:rgba(255,255,255,.9)}
   .cta .arw svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .cta:hover .arw{color:var(--navy)}
 
   /* ===== ABLAUF / Timeline ===== */
   .timeline{position:relative;padding-left:6px}
@@ -157,27 +159,27 @@
   .step:last-child{padding-bottom:0}
   .rail{position:relative;flex:none;display:flex;flex-direction:column;align-items:center}
   .rail .node{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;
-    background:rgba(242,185,138,.13);color:var(--warm);position:relative;z-index:1}
+    background:rgba(245,85,31,.15);color:var(--warm-2);position:relative;z-index:1}
   .rail .node svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
   .step.cold .rail .node{color:var(--accent);background:rgba(212,237,252,.12)}
   .rail .wire{position:absolute;top:44px;bottom:-26px;width:2px;
     background:linear-gradient(180deg,var(--line),rgba(212,237,252,.03));left:50%;transform:translateX(-50%)}
   .step:last-child .rail .wire{display:none}
   .stepbody{flex:1;min-width:0;padding-top:6px}
-  .stepbody .st{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--warm)}
+  .stepbody .st{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--warm-2)}
   .step.cold .stepbody .st{color:var(--accent)}
   .stepbody .sh{font-size:18px;font-weight:600;letter-spacing:-.01em;margin-top:3px}
   .stepbody .sp{font-size:13.5px;color:var(--ice-dim);line-height:1.55;margin-top:5px}
   .stepbody .note{display:inline-flex;align-items:center;gap:6px;margin-top:11px;
-    font-size:11.5px;font-weight:600;color:var(--warm);
-    background:rgba(242,185,138,.1);border:1px solid rgba(242,185,138,.24);border-radius:100px;padding:6px 12px}
+    font-size:11.5px;font-weight:600;color:var(--warm-2);
+    background:rgba(245,85,31,.11);border:1px solid rgba(245,85,31,.28);border-radius:100px;padding:6px 12px}
   .stepbody .note svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
   /* ===== inklusive grid ===== */
   .incl{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
   .icard{border-radius:20px;padding:20px 17px}
   .icard .ii{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
-    background:rgba(242,185,138,.13);color:var(--warm);margin-bottom:14px}
+    background:rgba(245,85,31,.15);color:var(--warm-2);margin-bottom:14px}
   .icard.cold .ii{background:rgba(212,237,252,.12);color:var(--accent)}
   .icard .ii svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
   .icard b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em}
@@ -189,12 +191,12 @@
     font-size:14.5px;font-weight:500;line-height:1.5}
   .brow:last-child{border-bottom:none}
   .brow .bk{flex:none;width:27px;height:27px;border-radius:9px;display:grid;place-items:center;margin-top:1px;
-    background:rgba(242,185,138,.14);color:var(--warm)}
+    background:rgba(245,85,31,.16);color:var(--warm-2)}
   .brow .bk.cold{background:rgba(212,237,252,.14);color:var(--accent)}
   .brow .bk svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
   /* ===== Termine buchen ===== */
-  .book{display:flex;flex-direction:column;gap:var(--gap)}
+  .book{display:grid;grid-template-columns:1fr;gap:var(--gap)}
   .bcard{position:relative;overflow:hidden;display:flex;align-items:center;gap:16px;
     border-radius:var(--radius);padding:17px 18px;text-decoration:none;color:var(--ice);
     transition:transform .2s ease,border-color .2s ease}
@@ -202,18 +204,18 @@
     background:linear-gradient(100deg,transparent,rgba(234,246,255,.1),transparent);
     transform:skewX(-16deg);transition:left .8s cubic-bezier(.2,.7,.2,1);pointer-events:none}
   .bcard:hover::before{left:135%}
-  .bcard:hover{transform:translateY(-2px);border-color:rgba(242,185,138,.38)}
+  .bcard:hover{transform:translateY(-2px);border-color:rgba(245,85,31,.42)}
   .bcard:active{transform:scale(.99)}
   .bcal{flex:none;width:56px;height:60px;border-radius:16px;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;background:rgba(242,185,138,.12);
-    border:1px solid rgba(242,185,138,.22);position:relative;z-index:1}
-  .bcal .m{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--warm)}
+    align-items:center;justify-content:center;background:rgba(245,85,31,.13);
+    border:1px solid rgba(245,85,31,.26);position:relative;z-index:1}
+  .bcal .m{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--warm-2)}
   .bcal .d{font-size:24px;font-weight:700;line-height:1;color:var(--ice);margin-top:2px}
   .binfo{flex:1;min-width:0;position:relative;z-index:1}
   .binfo b{display:block;font-size:16px;font-weight:600;letter-spacing:-.01em}
   .binfo span{display:block;font-size:12.5px;color:var(--ice-dim);margin-top:3px}
   .barw{flex:none;color:var(--ice-faint);position:relative;z-index:1;transition:transform .18s ease,color .18s ease}
-  .bcard:hover .barw{transform:translateX(4px);color:var(--warm)}
+  .bcard:hover .barw{transform:translateX(4px);color:var(--warm-2)}
   .barw svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
   /* ===== Facts ===== */
@@ -226,19 +228,19 @@
   .fact .fl{flex:1;min-width:0}
   .fact .fl .k{display:block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ice-faint)}
   .fact .fl .v{display:block;font-size:14.5px;font-weight:500;margin-top:2px}
-  .fact .fl .v a{color:var(--accent);text-decoration:none}
+  .fact .fl .v a{color:var(--warm-2);text-decoration:none}
   .fact .fl .v a:hover{text-decoration:underline}
-  .fact .price{font-size:22px;font-weight:700;color:var(--warm);flex:none}
+  .fact .price{font-size:22px;font-weight:700;color:var(--warm-2);flex:none}
 
   /* ===== Über ===== */
   .about{border-radius:var(--radius);padding:24px}
   .about p{font-size:14.5px;line-height:1.7;color:var(--ice-dim)}
   .about p b{color:var(--ice);font-weight:600}
-  .about p b.w{color:var(--warm)}
+  .about p b.w{color:var(--warm-2)}
   .about p + p{margin-top:14px}
   .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-  .tags span{font-size:11.5px;font-weight:500;color:var(--warm);
-    background:rgba(242,185,138,.1);border:1px solid rgba(242,185,138,.2);border-radius:100px;padding:7px 13px}
+  .tags span{font-size:11.5px;font-weight:500;color:var(--warm-2);
+    background:rgba(245,85,31,.12);border:1px solid rgba(245,85,31,.24);border-radius:100px;padding:7px 13px}
   .tags span.cold{color:var(--accent);background:rgba(212,237,252,.1);border-color:var(--line)}
 
   .igrow{display:flex;gap:var(--gap);margin-top:18px}
@@ -247,16 +249,16 @@
     text-decoration:none;color:var(--ice);font-weight:600;font-size:13.5px;
     box-shadow:inset 0 1px 0 rgba(234,246,255,.1);
     transition:transform .16s ease,border-color .16s ease}
-  .igbtn:hover{transform:translateY(-2px);border-color:rgba(242,185,138,.38)}
-  .igbtn svg{width:19px;height:19px;fill:var(--warm);flex:none}
+  .igbtn:hover{transform:translateY(-2px);border-color:rgba(245,85,31,.42)}
+  .igbtn svg{width:19px;height:19px;fill:var(--warm-2);flex:none}
   .igbtn .h{flex-basis:100%;text-align:center;color:var(--ice-faint);font-weight:400;font-size:11.5px}
 
   /* final CTA */
   .final{text-align:center;margin-top:var(--section)}
-  .final h2{font-size:26px;font-weight:700;letter-spacing:-.01em}
-  .final h2 .g{background:linear-gradient(90deg,var(--warm),var(--accent));
+  .final h2{font-size:clamp(24px,6vw,30px);font-weight:700;letter-spacing:-.01em}
+  .final h2 .g{background:linear-gradient(90deg,var(--warm),var(--warm-2));
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .final p{font-size:14.5px;color:var(--ice-dim);margin-top:11px;max-width:32ch;margin-left:auto;margin-right:auto}
+  .final p{font-size:14.5px;color:var(--ice-dim);margin-top:11px;max-width:34ch;margin-left:auto;margin-right:auto}
 
   footer{text-align:center;margin-top:48px}
   footer .fl{font-size:12.5px}
@@ -268,33 +270,67 @@
   /* sticky mobile bar */
   .sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;
     padding:12px max(16px,env(safe-area-inset-left)) calc(12px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-right));
-    background:linear-gradient(180deg,rgba(4,13,36,0),rgba(4,13,36,.88) 40%);
+    background:linear-gradient(180deg,rgba(4,13,36,0),rgba(4,13,36,.9) 40%);
     transform:translateY(120%);transition:transform .35s cubic-bezier(.2,.7,.2,1);pointer-events:none}
   .sticky.show{transform:translateY(0)}
   .sticky a{pointer-events:auto;max-width:468px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px;
-    padding:16px;border-radius:16px;text-decoration:none;font-weight:700;font-size:15px;
-    background:linear-gradient(94deg,var(--warm-soft),var(--accent));color:var(--navy);
-    box-shadow:0 16px 40px -14px rgba(0,0,0,.6)}
+    padding:16px;border-radius:16px;text-decoration:none;font-weight:700;font-size:15px;color:#fff;
+    background:linear-gradient(94deg,var(--warm),var(--warm-2));
+    box-shadow:0 16px 40px -12px rgba(245,85,31,.75)}
   .sticky a svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
   /* share */
-  .share{position:absolute;top:calc(env(safe-area-inset-top) + 14px);right:max(20px,env(safe-area-inset-right));
+  .share{position:absolute;top:calc(env(safe-area-inset-top) + 14px);right:max(22px,env(safe-area-inset-right));
     width:42px;height:42px;border-radius:50%;display:grid;place-items:center;z-index:5;cursor:pointer;
     background:rgba(212,237,252,.08);border:1px solid var(--line);color:var(--ice);
     transition:background .16s ease,transform .16s ease,color .16s ease}
-  .share:hover{background:var(--warm);color:var(--navy);transform:translateY(-1px)}
+  .share:hover{background:var(--warm);color:#fff;transform:translateY(-1px)}
   .share:active{transform:scale(.94)}
   .share svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));
-    transform:translateX(-50%) translateY(18px);background:var(--warm);color:var(--navy);
+    transform:translateX(-50%) translateY(18px);background:var(--warm);color:#fff;
     font-size:13px;font-weight:600;padding:11px 18px;border-radius:100px;
-    box-shadow:0 14px 34px rgba(0,0,0,.45);opacity:0;pointer-events:none;
+    box-shadow:0 14px 34px rgba(245,85,31,.5);opacity:0;pointer-events:none;
     transition:opacity .25s ease,transform .25s ease;z-index:40;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+  /* ======= RESPONSIVE ======= */
   @media (max-width:360px){
     .dates,.incl{grid-template-columns:1fr}
-    .htitle{font-size:38px}
+  }
+
+  /* Tablet: mehr Luft + zweispaltige Termine */
+  @media (min-width:600px) and (max-width:999px){
+    .wrap{max-width:600px}
+    .book{grid-template-columns:1fr 1fr}
+  }
+
+  /* Desktop: zweispaltiges Layout, Poster-Spalte links sticky */
+  @media (min-width:1000px){
+    .wrap{max-width:1120px;
+      padding-top:calc(56px + env(safe-area-inset-top));
+      padding-bottom:64px}
+    .shell{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);
+      gap:clamp(40px,5vw,72px);align-items:start}
+    .colA{position:sticky;top:40px}
+    header{text-align:left;margin-bottom:0}
+    .cross{justify-content:flex-start}
+    .hero{margin-top:26px}
+    .colB{min-width:0}
+    .colB > .eyebrow:first-child{margin-top:0}
+    .eyebrow{margin-top:44px}
+    .incl{grid-template-columns:1fr 1fr}
+    .book{grid-template-columns:1fr 1fr}
+    .final{margin-top:56px;text-align:left}
+    .final p{margin-left:0}
+    .final .cta{max-width:520px}
+    footer{grid-column:1 / -1;margin-top:64px;padding-top:28px;border-top:1px solid var(--line)}
+    .sticky{display:none}
+    .wrap{padding-bottom:64px}
+    .share{top:24px}
+  }
+  @media (min-width:1000px){
+    body{padding-bottom:0}
   }
 </style>
 </head>
@@ -309,62 +345,70 @@
     <svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4M12 2v13"/></svg>
   </button>
 
-  <header class="rise d1">
-    <img class="logo" src="assets/logo-white.png" alt="freezeclub" />
-    <div class="cross">
-      <span class="side">freezeclub</span>
-      <span class="x">×</span>
-      <span class="side sass">Sässis Yoga</span>
-    </div>
-  </header>
+  <div class="shell">
 
-  <!-- ===== HERO ===== -->
-  <section class="hero rise d2">
-    <div class="hero-art">
-      <div class="flow" aria-hidden="true">
-        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-          <g fill="none" stroke-width="1.4" stroke-linecap="round">
-            <path d="M-20 120 C 80 60, 160 180, 260 110 S 420 60, 440 140" stroke="rgba(120,200,255,.35)"/>
-            <path d="M-20 180 C 90 130, 170 240, 270 170 S 420 130, 440 200" stroke="rgba(212,237,252,.28)"/>
-            <path d="M-20 320 C 90 270, 170 380, 270 310 S 420 270, 440 340" stroke="rgba(242,185,138,.45)"/>
-            <path d="M-20 380 C 80 330, 160 440, 260 370 S 420 330, 440 400" stroke="rgba(236,154,110,.38)"/>
-          </g>
-          <g fill="none" stroke="rgba(212,237,252,.5)" stroke-width="1.2" stroke-linecap="round" opacity=".7">
-            <path d="M200 60 v40 M180 78 L200 90 L220 78"/>
-          </g>
-        </svg>
+  <!-- ============ SPALTE A (Poster) ============ -->
+  <div class="colA">
+    <header class="rise d1">
+      <img class="logo" src="assets/logo-white.png" alt="freezeclub" />
+      <div class="cross">
+        <span class="side">freezeclub</span>
+        <span class="x">×</span>
+        <span class="side sass">Sässis Yoga</span>
       </div>
-      <div class="hero-body">
-        <span class="kicker">Erst fließen, dann frieren ❄</span>
-        <h1 class="htitle"><span class="i">freeze</span> <span class="g">your<br>flow.</span></h1>
-        <p class="hsub">Gemeinsam mit Sässis Yoga: erst eine aktivierende Yoga-Session, die dein inneres Feuer entfacht — dann der Cool-down in der Kryokältekammer. Wärme trifft Kälte.</p>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- date chips -->
-  <div class="dates rise d3">
-    <div class="datechip frost">
-      <span class="dow">Freitag</span>
-      <span class="day">7.</span>
-      <span class="mo">August 2026</span>
-      <span class="tm">18:00 Uhr</span>
+    <!-- HERO -->
+    <section class="hero rise d2">
+      <div class="hero-art">
+        <div class="flow" aria-hidden="true">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <g fill="none" stroke-width="1.4" stroke-linecap="round">
+              <path d="M-20 120 C 80 60, 160 180, 260 110 S 420 60, 440 140" stroke="rgba(120,200,255,.32)"/>
+              <path d="M-20 180 C 90 130, 170 240, 270 170 S 420 130, 440 200" stroke="rgba(212,237,252,.26)"/>
+              <path d="M-20 320 C 90 270, 170 380, 270 310 S 420 270, 440 340" stroke="rgba(255,124,72,.5)"/>
+              <path d="M-20 380 C 80 330, 160 440, 260 370 S 420 330, 440 400" stroke="rgba(245,85,31,.42)"/>
+            </g>
+            <g fill="none" stroke="rgba(212,237,252,.5)" stroke-width="1.2" stroke-linecap="round" opacity=".7">
+              <path d="M200 60 v40 M180 78 L200 90 L220 78"/>
+            </g>
+          </svg>
+        </div>
+        <div class="hero-body">
+          <span class="kicker">Erst fließen, dann frieren ❄</span>
+          <h1 class="htitle"><span class="i">freeze</span> <span class="g">your<br>flow.</span></h1>
+          <p class="hsub">Gemeinsam mit Sässis Yoga: erst eine aktivierende Yoga-Session, die dein inneres Feuer entfacht — dann der Cool-down in der Kryokältekammer. Wärme trifft Kälte.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- date chips -->
+    <div class="dates rise d3">
+      <div class="datechip frost">
+        <span class="dow">Freitag</span>
+        <span class="day">7.</span>
+        <span class="mo">August 2026</span>
+        <span class="tm">18:00 Uhr</span>
+      </div>
+      <div class="datechip frost">
+        <span class="dow">Freitag</span>
+        <span class="day">18.</span>
+        <span class="mo">September 2026</span>
+        <span class="tm">18:00 Uhr</span>
+      </div>
     </div>
-    <div class="datechip frost">
-      <span class="dow">Freitag</span>
-      <span class="day">18.</span>
-      <span class="mo">September 2026</span>
-      <span class="tm">18:00 Uhr</span>
-    </div>
+
+    <a class="cta rise d3" href="https://shop.freezeclub.de/products/freezeclub-x-sassis-yoga-1" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></span>
+      <span class="txt"><b>Platz sichern</b><span>Begrenzte Teilnehmerzahl · 79 € pro Person</span></span>
+      <span class="arw"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
   </div>
 
-  <a class="cta rise d3" href="https://shop.freezeclub.de/products/freezeclub-x-sassis-yoga-1" target="_blank" rel="noopener">
-    <span class="ic"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></span>
-    <span class="txt"><b>Platz sichern</b><span>Begrenzte Teilnehmerzahl · 79 € pro Person</span></span>
-    <span class="arw"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-  </a>
+  <!-- ============ SPALTE B (Inhalt) ============ -->
+  <div class="colB">
 
-  <!-- ===== ABLAUF ===== -->
+  <!-- ABLAUF -->
   <div class="eyebrow w rise d3">
     <span class="flake"><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></span>
     Dein Abend
@@ -409,7 +453,7 @@
     </div>
   </div>
 
-  <!-- ===== INKLUSIVE ===== -->
+  <!-- INKLUSIVE -->
   <div class="eyebrow rise d4">
     <span class="flake"><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></span>
     Alles dabei
@@ -433,7 +477,7 @@
     </div>
   </div>
 
-  <!-- ===== RECOVERY ===== -->
+  <!-- RECOVERY -->
   <div class="eyebrow w rise d5">
     <span class="flake"><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></span>
     Was Wärme &amp; Kälte bewirken
@@ -445,25 +489,7 @@
     <div class="brow"><span class="bk cold"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Wärme &amp; Kälte, Bewegung &amp; Stille, Spannung &amp; Entspannung im perfekten Zusammenspiel</div>
   </div>
 
-  <!-- ===== TERMINE ===== -->
-  <div class="eyebrow w rise d5">
-    <span class="flake"><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></span>
-    Termin wählen
-  </div>
-  <div class="book rise d5">
-    <a class="bcard frost" href="https://shop.freezeclub.de/products/freezeclub-x-sassis-yoga-1" target="_blank" rel="noopener">
-      <span class="bcal"><span class="m">Aug</span><span class="d">7</span></span>
-      <span class="binfo"><b>Freitag, 7. August</b><span>18:00 Uhr · freezeclub Balingen</span></span>
-      <span class="barw"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="bcard frost" href="https://shop.freezeclub.de/products/freezeclub-x-sassis-yoga-1" target="_blank" rel="noopener">
-      <span class="bcal"><span class="m">Sep</span><span class="d">18</span></span>
-      <span class="binfo"><b>Freitag, 18. September</b><span>18:00 Uhr · freezeclub Balingen</span></span>
-      <span class="barw"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-  </div>
-
-  <!-- ===== FACTS ===== -->
+  <!-- FACTS -->
   <div class="eyebrow rise d5">
     <span class="flake"><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></span>
     Gut zu wissen
@@ -488,7 +514,7 @@
     </div>
   </div>
 
-  <!-- ===== ÜBER ===== -->
+  <!-- ÜBER -->
   <div class="eyebrow w rise d6">
     <span class="flake"><svg viewBox="0 0 24 24"><path d="M12 2v20M4 6l16 12M20 6 4 18"/></svg></span>
     Wer dahinter steckt
@@ -515,7 +541,7 @@
     </div>
   </div>
 
-  <!-- ===== FINAL CTA ===== -->
+  <!-- FINAL CTA -->
   <div class="final rise d7">
     <h2>Bereit für <span class="g">fließen &amp; frieren</span>?</h2>
     <p>Sichere dir deinen Platz — die Teilnehmerzahl ist begrenzt.</p>
@@ -526,6 +552,8 @@
     </a>
   </div>
 
+  </div><!-- /colB -->
+
   <footer class="rise d7">
     <div class="fl">
       <a href="https://www.freezeclub.de/impressum" target="_blank" rel="noopener">Impressum</a>
@@ -534,6 +562,8 @@
     </div>
     <p class="disc">Ein Event des freezeclub Balingen in Kooperation mit Sässis Yoga.</p>
   </footer>
+
+  </div><!-- /shell -->
 
 </main>
 
@@ -568,7 +598,7 @@
     });
   })();
 
-  /* ---- Sticky-Bar erst nach dem Hero zeigen ---- */
+  /* ---- Sticky-Bar erst nach dem Hero zeigen (nur Mobile) ---- */
   (function(){
     var bar = document.getElementById('sticky');
     var hero = document.querySelector('.hero');
