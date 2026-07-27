@@ -810,6 +810,27 @@
       });
     }
   })();
+
+  /* ---- Tab-Titel: zurückholen, wenn man weg ist ---- */
+  (function(){
+    var orig = document.title;
+    var msgs = ['❄️ Hast du mich vergessen?', '👉 Jetzt Platz sichern · 79 €'];
+    var iv = null, i = 0;
+    function start(){
+      if(iv) return;
+      i = 0; document.title = msgs[0];
+      iv = setInterval(function(){ i = (i + 1) % msgs.length; document.title = msgs[i]; }, 2600);
+    }
+    function stop(){
+      if(iv){ clearInterval(iv); iv = null; }
+      document.title = orig;
+    }
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden) start(); else stop();
+    });
+    window.addEventListener('blur', start);
+    window.addEventListener('focus', stop);
+  })();
 </script>
 </body>
 </html>
