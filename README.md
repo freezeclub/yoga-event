@@ -12,7 +12,7 @@ Ablauf: Kennenlernen & Tee → 1 h Yoga (eigene Matte mitbringen) → Essen & ge
 
 - **Ort:** Wilhelmstraße 45, 72336 Balingen
 - **Termine:** Fr 7. August 2026 · Fr 18. September 2026, jeweils 18:00 Uhr
-- **Preis:** 79 € pro Person (inkl. Bonus-Gutschein für eine weitere Anwendung)
+- **Preis:** 59 € pro Person (inkl. Bonus-Gutschein für eine weitere Anwendung)
 
 ## Design
 freezeclub-Branding (Navy `#040d24`, Eis `#D4EDFC`, Poppins) mit warmem Yoga-Akzent
