@@ -327,14 +327,18 @@
   .reel-mute.on .ic-muted{display:none}
 
   /* countdown */
-  .countdown{border-radius:var(--radius);padding:22px 20px;margin:20px auto 4px;text-align:center;max-width:520px}
+  .countdown{border-radius:var(--radius);padding:24px 22px;margin:20px auto 4px;text-align:center;max-width:520px}
   .cd-label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--warm-2)}
-  .cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
-  .cd-cell{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:14px 4px}
-  .cd-cell b{display:block;font-size:clamp(26px,7.5vw,34px);font-weight:700;color:var(--ice);
-    font-variant-numeric:tabular-nums;line-height:1}
-  .cd-cell span{display:block;font-size:10px;color:var(--ice-faint);margin-top:7px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
-  .cd-date{margin-top:15px;font-size:13px;color:var(--ice-dim);font-weight:600}
+  .cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+  .cd-cell{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    border:1px solid var(--line);border-radius:16px;padding:20px 8px 15px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+  .cd-cell b{display:block;font-size:clamp(30px,7.4vw,42px);font-weight:700;color:var(--ice);
+    font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-.02em}
+  .cd-cell span{display:block;font-size:10.5px;color:var(--ice-faint);margin-top:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+  .cd-date{margin-top:18px;font-size:13.5px;color:var(--ice-dim);font-weight:600}
+  @media (max-width:360px){ .cd-cell b{font-size:26px} .cd-cell{padding:16px 4px 12px} }
 
   /* final CTA */
   .final{text-align:center;margin-top:var(--section)}
@@ -673,6 +677,8 @@
 
   </div><!-- /colB -->
 
+  </div><!-- /shell -->
+
   <footer class="rise d7">
     <div class="fl">
       <a href="https://www.freezeclub.de/impressum" target="_blank" rel="noopener">Impressum</a>
@@ -681,8 +687,6 @@
     </div>
     <p class="disc">Ein Event des freezeclub Balingen in Kooperation mit Sässis Yoga.</p>
   </footer>
-
-  </div><!-- /shell -->
 
 </main>
 
